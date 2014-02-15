@@ -32,13 +32,13 @@ if ($title) {
 			system_message(elgg_echo('contactus:success'));
 			$contact->state = "active";
 		}
-		forward($address);
+		forward(REFERER);
 	} else {
 		register_error(elgg_echo('contactus:failed'));
-		forward($address);
+		forward(REFERER);
 	}
 } else {
 
 	register_error(elgg_echo('contactus:failed'));
-	forward($address);
+	forward(REFERER);
 }
