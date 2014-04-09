@@ -13,7 +13,7 @@
 
 $guid = 0;
 $title = "";
-
+$email="";
 $description = "";
 $owner = elgg_get_logged_in_user_entity();
 
@@ -30,6 +30,19 @@ $owner = elgg_get_logged_in_user_entity();
 		?>
 	</label>
 </div>
+<?php if(!elgg_is_logged_in()): ?>
+<div>
+	<label>
+		<?php
+			echo elgg_echo('contactus:email');
+			echo elgg_view('input/text', array(
+				'name' => 'email',
+				'value' => $email,
+			));
+		?>
+	</label>
+</div>
+<?php endif; ?>
 <div>
 	<label>
 		<?php 	echo elgg_echo('contactus:description'); ?>
@@ -41,6 +54,7 @@ $owner = elgg_get_logged_in_user_entity();
 		)); 
 	?>
 </div>
+
 <div class="elgg-foot">
 	<?php
 		echo elgg_view('input/submit', array(
