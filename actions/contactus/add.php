@@ -12,17 +12,15 @@
  */
 $title = get_input('title');
 
-
-
 if ($title) {
-        if(elgg_is_logged_in()){
+        if(elgg_is_logged_in()) {
+            $description = get_input('description');	
             $contact = new ElggObject;
             $contact->subtype = "contactus";
             $contact->owner_guid = elgg_get_logged_in_user_guid();
             $contact->title = $title;
             $contact->description = $description;
             $contact->access_id = $access;
-            $description = get_input('description');
             $current_user = elgg_get_logged_in_user_entity();
             $user_name = $current_user->name;
             $user_email = $current_user->email;
@@ -42,7 +40,7 @@ if ($title) {
                     forward(REFERER);
             }
             
-        }else{ //Non registered user. Get details from submission. No DB Logging 
+        } else { //Non registered user. Get details from submission. No DB Logging 
                 $description = 'Sender Email: ' . get_input('email') . '<br>' . get_input('description');
                 $user_name = get_input('email');
                 $user_email = get_input('email');
@@ -60,8 +58,8 @@ if ($title) {
         
         elgg_send_email($user_email, $site->email, $subject, $message); //In any case send email
         forward(REFERER);
+        
 } else {
-
 	register_error(elgg_echo('contactus:failed'));
 	forward(REFERER);
 }
