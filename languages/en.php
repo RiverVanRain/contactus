@@ -12,7 +12,6 @@
  */
 
 $english = array(
-
 	'item:object:contactus' => 'Contacts',
 	'admin:administer_utilities:contactus' => 'Contacted messages',
 	'contactus' => 'Contact Us',
@@ -21,7 +20,7 @@ $english = array(
 	'contactus:none' => 'There is no contacted messages',
 	'contactus:contact' => 'Contact to admin',
 	'contactus:title' => 'Subject',
-        'contactus:email' => 'Your Email',
+    'contactus:email' => 'Your Email',
 	'contactus:deleted' => 'The contacted messages has been deleted',
 	'contactus:notdeleted' => 'We were not able to delete this',
 	'contactus:delete' => 'Delete',
@@ -33,7 +32,7 @@ $english = array(
 	'contactus:reason' => 'Message',
 	'contactus:description' => 'Message',
 	'contactus:success' => 'Your message has been sent to the site admin',
-        'contactus:successanon' => 'Your message has been sent to site admin email',
+    'contactus:successanon' => 'Your message has been sent to site admin email',
 	'contactus:failing' => 'Your message could not be sent',
 	'contactus:contact' => 'Contact Us',
 	'contactus:moreinfo' => 'More info',
@@ -43,20 +42,21 @@ $english = array(
 
 	'contactus:failed' => 'Sorry, the attempt to contact this content has failed.',
 	'contactus:notarchived' => 'We were not able to archive this message',
+	'contactus:email:fail' => 'Your Email is not valid. Try again',
+	
+	'contactus:notloggedin' => 'The user is not logged in',
 	
 	//NOTIFICATIONS
 	'contactus:email:subject' => 'You have a new contacted message',
-	'contactus:email:body' => "You have a contacted message from %s. It reads:
-
+	'contactus:email:body' => 'You have a contacted message from %s. It reads:
 
 	%s
 	
 	%s
 
-
 	To view all Contacted messages, click here:
 
-	%s",
+	%s',
 );
 
 add_translation("en", $english);

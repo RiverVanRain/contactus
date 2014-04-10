@@ -11,10 +11,10 @@
  *
  */
 $title = get_input('title');
+$description = get_input('description');
 
 if ($title) {
         if(elgg_is_logged_in()) {
-            $description = get_input('description');	
             $contact = new ElggObject;
             $contact->subtype = "contactus";
             $contact->owner_guid = elgg_get_logged_in_user_guid();
@@ -34,31 +34,32 @@ if ($title) {
                             $contact->state = "active";
                             system_message(elgg_echo('contactus:success'));            
                     }
-                    
             } else {
                     register_error(elgg_echo('contactus:failed'));
                     forward(REFERER);
             }
             
         } else { //Non registered user. Get details from submission. No DB Logging 
-                $description = 'Sender Email: ' . get_input('email') . '<br>' . get_input('description');
-                $user_name = get_input('email');
-                $user_email = get_input('email');
-                $user_link = "N/A. The user is not logged in";
-                system_message(elgg_echo('contactus:successanon'));
+                $user_name = $user_email = get_input('email');
+				if (!is_email_address($user_email)) {
+					register_error(elgg_echo('contactus:email:fail'));
+					forward(REFERER);
+				}
+				$user_link = elgg_echo('contactus:notloggedin');
+				system_message(elgg_echo('contactus:successanon'));
         }
-                $site = elgg_get_site_entity();
-                $subject = elgg_echo('contactus:email:subject');
-                $message = elgg_echo('contactus:email:body', array(
+       
+	   $message = elgg_echo('contactus:email:body', array(
                         $user_name,
                         $title,
                         $description,
                         $user_link
-        ));
-        
-        elgg_send_email($user_email, $site->email, $subject, $message); //In any case send email
-        forward(REFERER);
-        
+               ));
+	  $site = elgg_get_site_entity();
+      $subject = elgg_echo('contactus:email:subject');
+                
+      elgg_send_email($user_email, $site->email, $subject, $message); //In any case send email
+      forward(REFERER);
 } else {
 	register_error(elgg_echo('contactus:failed'));
 	forward(REFERER);

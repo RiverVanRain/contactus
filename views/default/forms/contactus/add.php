@@ -10,15 +10,12 @@
  * @link http://weborganizm.org/crewz/p/1983/personal-net
  *
  */
-
 $guid = 0;
 $title = "";
 $email="";
 $description = "";
 $owner = elgg_get_logged_in_user_entity();
-
 ?>
-
 <div>
 	<label>
 		<?php
@@ -26,6 +23,7 @@ $owner = elgg_get_logged_in_user_entity();
 			echo elgg_view('input/text', array(
 				'name' => 'title',
 				'value' => $title,
+				'required' => true
 			));
 		?>
 	</label>
@@ -35,9 +33,10 @@ $owner = elgg_get_logged_in_user_entity();
 	<label>
 		<?php
 			echo elgg_echo('contactus:email');
-			echo elgg_view('input/text', array(
+			echo elgg_view('input/email', array(
 				'name' => 'email',
 				'value' => $email,
+				'required' => true
 			));
 		?>
 	</label>
@@ -51,12 +50,17 @@ $owner = elgg_get_logged_in_user_entity();
 		echo elgg_view('input/longtext',array(
 			'name' => 'description',
 			'value' => $description,
-		)); 
+		));
 	?>
 </div>
-
 <div class="elgg-foot">
 	<?php
+	   if (!elgg_is_logged_in()) {
+       echo elgg_view('input/captcha', $vars);
+	   }
+	   ?>
+   <br/>
+	   <?php
 		echo elgg_view('input/submit', array(
 			'value' => elgg_echo('contactus:contact'),
 		));
