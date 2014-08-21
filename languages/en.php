@@ -46,6 +46,10 @@ $english = array(
 	
 	'contactus:notloggedin' => 'The user is not logged in',
 	
+	//CUSTOM LOGIN/REGISTER FORM
+	'user:cant:login' => 'Can\'t log in?',
+	'user:cant:register' => 'Can\'t register?',
+	
 	//NOTIFICATIONS
 	'contactus:email:subject' => 'You have a new contacted message',
 	'contactus:email:body' => 'You have a contacted message from %s. It reads:
