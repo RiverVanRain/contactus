@@ -5,8 +5,8 @@
 	<version>2.1</version>
 	<category>enhancement</category>
 	<description>Adds the option for users and visitors to send message and for admins to check it out.</description>
-	<website>http://weborganizm.org/crewz/p/1983/personal-net</website>
-	<copyright>(c) weborganiZm 2k14</copyright>
+	<website>http://o.wzm.me/crewz/p/1983/personal-net</website>
+	<copyright>(c) organiZm 2k14</copyright>
 	<license>GNU General Public License version 2</license>
 	<requires>
 		<type>elgg_release</type>
